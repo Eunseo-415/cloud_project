@@ -20,9 +20,9 @@ function readVaccine() {
        <div class='d-flex justify-content-center'>
       <form>
       <button type='button' onclick='deleteVaccine(${value.sid});' value='${value.sid}'' 
-      class='btn btn-danger btn-block' id='deleteBtn'>Delete</button>
+      class='btn btn-danger btn-block m-3' id='deleteBtn'>Delete</button>
       </form>
-      <button type="button" onclick='openUpdateForm(${value.sid});' class="btn btn-info btn-md open-update-btn">
+      <button type="button" onclick='openUpdateForm(${value.sid});' class="btn btn-secondary btn-md open-update-btn m-3">
         Update
       </button>
       </form>
@@ -57,6 +57,10 @@ const modal = document.querySelector("#create-form");
 const closeUpdateModal = document.querySelector(".close-update-btn");
 const updateModal = document.querySelector("#update-form");
 
+const closeDeleteModal = document.querySelector(".close-delete-btn");
+const deleteModal = document.querySelector("#delete-form");
+const deleteBtn = document.querySelector("#delete-btn");
+const sid_delete = 0;
 //const updateModal = document.querySelector("#update-form");
 
 openModal.addEventListener("click", () => {
@@ -70,6 +74,10 @@ closeModal.addEventListener("click", () => {
 closeUpdateModal.addEventListener("click", () => {
   updateModal.close();
 });
+
+closeDeleteModal.addEventListener("click", ()=>{
+  deleteModal.close();
+})
 
 myFormPost.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -100,7 +108,9 @@ myFormPost.addEventListener("submit", function (e) {
       modal.close();
     });
 });
-
+deleteBtn.addEventListener("click", ()=>{
+  deleteVaccine(sid_delete)
+})
 function deleteVaccine(id) {
   console.log(id);
   let api = `https://dgok582391.execute-api.ap-southeast-1.amazonaws.com/shotsDelete/${id}`;
@@ -167,4 +177,9 @@ function updateVaccine(sid, pid, vaccine, date) {
       console.log(data);
       readVaccine();
     });
+}
+
+function openDeleteForm(sid){
+  deleteModal.showModal();
+  sid_delete = sid;
 }

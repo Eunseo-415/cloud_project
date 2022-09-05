@@ -11,13 +11,39 @@
       integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1 class="text-center">VACCINE STORAGE</h1>
+    <!-- top nav -->
+    <nav class="navbar navbar-expand-lg bg-light shadow-sm">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Vaccine Management</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">temp</a>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+    <br/>
+    <h1 class="text-center">VACCINE TABLE</h1>
     <div class="container">
-      <button type="button" class="btn btn-success btn-md open-btn">
+      <button type="button" class="btn btn-success btn-md open-btn m-3">
         New Vaccine
       </button>
+    <!-- create modal -->
       <dialog class="create-form" id="create-form">
         <div class="d-flex justify-content-center create-form">
           <div class="col-md-5">
@@ -76,10 +102,11 @@
             </form>
           </div>
         </div>
-        <button type="button" class="btn btn-info btn-md close-btn">
+        <button type="button" class="btn btn-secondary btn-md close-btn">
           Close
         </button>
       </dialog>
+    <!-- table -->
       <table class="table table-bordered">
         <thead class="table-primary">
           <tr>
@@ -93,7 +120,7 @@
         <tbody id="body" class="table-group-divider"></tbody>
       </table>
     </div>
-
+    <!-- update modal -->
     <dialog class="update-form" id="update-form">
       <div class="d-flex justify-content-center">
         <div class="col-md-5">
@@ -152,9 +179,22 @@
           </form>
         </div>
       </div>
-      <button type="button" class="btn btn-info btn-md close-update-btn">
+      <button type="button" class="btn btn-danger btn-md close-update-btn">
         Close
       </button>
+    </dialog>
+    <dialog class="delete-form" id="delete-form">
+      <div class="text-center">
+        <h3>Do you want to delete?</h3>
+        <div class="row">
+          <div class="col-md">
+            <button type="button" class="btn btn-secondary close-delete-btn">CANCEL</button>
+          </div>
+          <div class="col-md">
+            <button type="button" class="btn btn-danger" id="delete-btn">DELETE</button>
+          </div>
+        </div>
+      </div> 
     </dialog>
     <script src="/script.js"></script>
   </body>
